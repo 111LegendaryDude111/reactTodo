@@ -1,7 +1,6 @@
 import style from './style.module.css'
 
 export const Main = ({todos,deleteTodo,changeStatus}) => {
-console.log(style.done)
     if (todos.length === 0){
         return (<p> todos is empty </p>);
     }

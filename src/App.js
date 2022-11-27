@@ -1,13 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import {Header} from './components/Header/Header'
 import {Main} from './components/Main/Main'
 
 
 function App() {
+  const [todos, setTodos] = useState([]);
+  
+  useEffect(() => {
+    const todosFromLS = localStorage.getItem('todos') ;
+    const prepareTodos = todosFromLS ? JSON.parse(todosFromLS) : [];
 
-let [todos, setTodos] = useState([]);
-
+    if (prepareTodos.length){
+      setTodos(prepareTodos)
+    }
+  },[])
+  
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  },[todos])
+  
 const createNewTargets = (text) => {
   const newTarget = {
     id: Date.now(),
