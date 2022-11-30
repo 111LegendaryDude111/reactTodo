@@ -1,6 +1,10 @@
-import style from './style.module.css'
+import { useTodosContext } from '../../contexts/ToDoContext';
+import style from './style.module.scss'
 
-export const Main = ({todos,deleteTodo,changeStatus}) => {
+export const Main = () => {
+
+    const {changeStatus,deleteTodo,todos} = useTodosContext()
+
     if (todos.length === 0){
         return (<p> todos is empty </p>);
     }

@@ -1,7 +1,9 @@
 import {useState} from "react";
+import { useTodosContext } from "../../contexts/ToDoContext";
 import styles from './styles.module.css'
-export const Form = ({createNewTargets}) => {
-
+export const Form = () => {
+    
+    const {createNewTargets} = useTodosContext();
     const [input, setInput] = useState('')
 
     const submitHandler = (e) => {
